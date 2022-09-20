@@ -43,9 +43,39 @@ class BillCalculatorTest {
     }
 
     @Test
+    void testPlatinumSingleConnectionWith1500MinutesReturns999() {
+        BillCalculator billCalculator = new BillCalculator();
+        assertEquals(999, billCalculator.calculateBill("Platinum", 1, 999));
+    }
+
+    @Test
     void testPlatinumSingleConnectionWith1530MinutesReturns1038() {
         BillCalculator billCalculator = new BillCalculator();
         assertEquals(1038, billCalculator.calculateBill("Platinum", 1, 1530));
+    }
+
+    @Test
+    void testGoldSingleConnectionWith1000MinutesReturns799() {
+        BillCalculator billCalculator = new BillCalculator();
+        assertEquals(799, billCalculator.calculateBill("Gold", 1, 1000));
+    }
+
+    @Test
+    void testGoldSingleConnectionWith1010MinutesReturns823point5() {
+        BillCalculator billCalculator = new BillCalculator();
+        assertEquals(823.5, billCalculator.calculateBill("Gold", 1, 1010));
+    }
+
+    @Test
+    void testSilverSingleConnectionWith500MinutesReturns599() {
+        BillCalculator billCalculator = new BillCalculator();
+        assertEquals(599, billCalculator.calculateBill("Silver", 1, 500));
+    }
+
+    @Test
+    void testSilverSingleConnectionWith520MinutesReturns671() {
+        BillCalculator billCalculator = new BillCalculator();
+        assertEquals(671, billCalculator.calculateBill("Silver", 1, 520));
     }
 
 }
