@@ -17,4 +17,16 @@ class BillCalculatorTest {
         BillCalculator billCalculator = new BillCalculator();
         assertEquals(1198, billCalculator.calculateBill("Platinum", 2));
     }
+
+    @Test
+    void testGoldSingleConnectionReturns799() {
+        BillCalculator billCalculator = new BillCalculator();
+        assertEquals(799, billCalculator.calculateBill("Gold", 1));
+    }
+
+    @Test
+    void testGoldTwoConnectionReturns1098() {
+        BillCalculator billCalculator = new BillCalculator();
+        assertEquals(1098, billCalculator.calculateBill("Gold", 2));
+    }
 }
