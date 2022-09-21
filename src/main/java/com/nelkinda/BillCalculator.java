@@ -20,10 +20,27 @@ enum PlanType {
     }
 }
 public class BillCalculator {
-    public double calculateBill(final PlanType planType, final int numberOfConnections, final int actualMinutes) {
+
+    public static final int DISCOUNT_LIMIT = 3;
+
+    public static double calculateBill(final PlanType planType, final int numberOfConnections, final int actualMinutes) {
+        return isEligibleForDiscount(numberOfConnections)
+                ? calculateDiscountedBill(planType, numberOfConnections, getExcessMinutes(actualMinutes, planType.baseMinutes))
+                : calculateNonDiscountedBill(planType, numberOfConnections, getExcessMinutes(actualMinutes, planType.baseMinutes));
+    }
+
+    private static boolean isEligibleForDiscount(int numberOfConnections) {
+        return numberOfConnections > DISCOUNT_LIMIT;
+    }
+
+    private static double calculateNonDiscountedBill(PlanType planType, int numberOfConnections, int excessMinutes) {
         int additionalConnections = numberOfConnections - 1;
-        int excessMinutes = getExcessMinutes(actualMinutes, planType.baseMinutes);
         return planType.baseRate + (double) (additionalConnections * planType.ratePerAdditionalConnection) + (excessMinutes * planType.ratePerExcessMinute);
+    }
+
+    private static double calculateDiscountedBill(PlanType planType, int numberOfConnections, int excessMinutes) {
+        int discountedConnections = numberOfConnections - DISCOUNT_LIMIT;
+        return planType.baseRate + (double) (2 * planType.ratePerAdditionalConnection) + (excessMinutes * planType.ratePerExcessMinute) + (99 * discountedConnections);
     }
 
     private static int getExcessMinutes(int actualMinutes, int baseMinutes) {

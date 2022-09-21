@@ -85,3 +85,27 @@ Examples:
 | Silver   | < 500        | 3                     | 599 + (2 * 399) = 1397            |
 | Silver   | < 500        | 5                     | 599 + (2 * 399 + (2 * 99)) = 1595 |
 
+## Task 4: Calculate Total Bill
+
+**Calculate Total Bill**
+
+Here is the summary of all the plans
+
+| Plan     | Basic Monthly Rate | Included Minutes | Rate per Excess Minute | Rate per Additional Connection | 
+|----------|--------------------|------------------|------------------------|--------------------------------|
+| Platinum | 999                | 1500             | 1.30                   | 199                            |
+| Gold     | 799                | 1000             | 2.45                   | 299                            |
+| Silver   | 599                | 500              | 3.60                   | 399                            |
+
+Examples
+
+| Plan     | Minutes Used | Number of Connections | Exceeded Bill                                      |
+|----------|--------------|-----------------------|----------------------------------------------------|
+| Platinum | 1246         | 4                     | 999 + (2 * 199) + (1 * 99) = 1496                  |
+| Platinum | 1782         | 3                     | 999 + (2 * 199) + (1.30 * 282) = 1763.6            |
+| Platinum | 1927         | 5                     | 999 + (2 * 199) + (2 * 99) + (1.30 * 427) = 2150.1 |
+| Gold     | 45           | 2                     | 799 + (1 * 299) = 1098                             |
+| Gold     | 1246         | 6                     | 799 + (2 * 299) + (3 * 99) + (246 * 2.45) = 2296.7 |
+| Silver   | 673          | 3                     | 599 + (2 * 399) + (3.60 * 173) = 2019.8            |
+| Silver   | 120          | 5                     | 599 + (2 * 399 + (2 * 99)) = 1595                  |
+
